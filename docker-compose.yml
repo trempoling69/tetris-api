@@ -44,6 +44,9 @@ services:
       - vpsNetwork
     volumes:
       - .:/usr/src/app
+    command: >
+      sh -c "npm run db:migrate && 
+             npm run start:dev"
 
 networks:
   backendNetwork:

@@ -5,8 +5,8 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 RUN npm install
 
+RUN npm install --save-dev sequelize-cli
+
 COPY . .
 
 EXPOSE ${DEV_PORT}
-
-CMD ["npm", "run", "start:dev"]
