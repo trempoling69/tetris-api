@@ -1,0 +1,57 @@
+services:
+  db:
+    image: mysql:latest
+    container_name: database
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - backendNetwork
+    volumes:
+      - tetris-mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  api:
+    build: .
+    container_name: api
+    restart: always
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      DEV_PORT: ${DEV_PORT}
+      JWT_SECRET: ${JWT_SECRET}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DIALECT: ${DB_DIALECT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DEV_PORT}:${DEV_PORT}"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - backendNetwork
+      - vpsNetwork
+    volumes:
+      - .:/usr/src/app
+
+networks:
+  backendNetwork:
+    name: backendNetwork
+    driver: bridge
+  vpsNetwork:
+    name: vpsNetwork
+    driver: bridge
+volumes:
+  tetris-mysql-data:
+    name: testris-mysql-data
