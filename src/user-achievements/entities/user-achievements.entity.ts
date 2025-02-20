@@ -1,3 +1,4 @@
+import { Exclude, Expose } from 'class-transformer';
 import {
   BeforeCreate,
   BeforeUpdate,
@@ -9,48 +10,33 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { Exclude, Expose } from 'class-transformer';
-import { CreateGameDto } from '../dto/create-game.dto';
 import { User } from 'src/users/entities/user.entity';
+import { CreateUserAchievementDto } from '../dto/create-user-achievements.dto';
+import { Achievement } from 'src/achievements/entities/achievement.entity';
 
 @Exclude()
-@Table
-export class Game extends Model<Game, CreateGameDto> {
+@Table({ tableName: 'UserAchievement' })
+export class UserAchievement extends Model<
+  UserAchievement,
+  CreateUserAchievementDto
+> {
   @PrimaryKey
+  @ForeignKey(() => User)
   @Column({
     allowNull: false,
     type: DataType.UUID,
-    defaultValue: DataType.UUIDV4,
   })
   @Expose()
-  id: string;
+  user_id: string;
 
+  @PrimaryKey
+  @ForeignKey(() => Achievement)
   @Column({
-    type: DataType.INTEGER,
     allowNull: false,
+    type: DataType.UUID,
   })
   @Expose()
-  score: number;
-
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-  })
-  lines_cleared: number;
-
-  @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
-  })
-  @Expose()
-  duration: number;
-
-  @Column({
-    type: DataType.DATE,
-    allowNull: true,
-  })
-  @Expose()
-  createdAt: string;
+  achievement_id: string;
 
   @ForeignKey(() => User)
   @Column({
@@ -58,7 +44,7 @@ export class Game extends Model<Game, CreateGameDto> {
     allowNull: true,
   })
   @Expose()
-  createdBy: string;
+  createdBy: string | null;
 
   @ForeignKey(() => User)
   @Column({
@@ -66,7 +52,7 @@ export class Game extends Model<Game, CreateGameDto> {
     allowNull: true,
   })
   @Expose()
-  updatedBy: string;
+  updatedBy: string | null;
 
   @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'creator' })
   @Expose()
@@ -77,14 +63,14 @@ export class Game extends Model<Game, CreateGameDto> {
   updater: User;
 
   @BeforeCreate
-  static setCreatedBy(instance: Game, options: { userId: string }) {
+  static setCreatedBy(instance: UserAchievement, options: { userId: string }) {
     if (options.userId) {
       instance.createdBy = options.userId;
     }
   }
 
   @BeforeUpdate
-  static setUpdatedBy(instance: Game, options: { userId: string }) {
+  static setUpdatedBy(instance: UserAchievement, options: { userId: string }) {
     if (options.userId) {
       instance.updatedBy = options.userId;
     }

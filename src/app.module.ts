@@ -6,6 +6,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthentificationModule } from './authentification/authentification.module';
 import { GamesModule } from './games/games.module';
+import { AchievementsModule } from './achievements/achievements.module';
+import { UserAchievementsModule } from './user-achievements/user-achievements.module';
 import databaseConfig from './sequelize/config';
 
 @Module({
@@ -21,6 +23,8 @@ import databaseConfig from './sequelize/config';
     UsersModule,
     AuthentificationModule,
     GamesModule,
+    AchievementsModule,
+    UserAchievementsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

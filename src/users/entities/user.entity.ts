@@ -2,6 +2,7 @@ import {
   BeforeCreate,
   BeforeUpdate,
   BelongsTo,
+  BelongsToMany,
   Column,
   DataType,
   ForeignKey,
@@ -12,10 +13,26 @@ import {
 } from 'sequelize-typescript';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { Exclude, Expose } from 'class-transformer';
+import { Achievement } from 'src/achievements/entities/achievement.entity';
+import { UserAchievement } from 'src/user-achievements/entities/user-achievements.entity';
+import {
+  BelongsToManyAddAssociationsMixin,
+  BelongsToManyGetAssociationsMixin,
+  HasManyGetAssociationsMixin,
+} from 'sequelize';
+import { Game } from 'src/games/entities/game.entity';
 
 @Exclude()
 @Table
 export class User extends Model<User, CreateUserDto> {
+  declare addAchievements: BelongsToManyAddAssociationsMixin<
+    Achievement,
+    string
+  >;
+  declare getAchievements: BelongsToManyGetAssociationsMixin<Achievement>;
+
+  declare getGames: HasManyGetAssociationsMixin<Game>;
+
   @PrimaryKey
   @Column({
     allowNull: false,
@@ -68,6 +85,14 @@ export class User extends Model<User, CreateUserDto> {
   })
   @Expose()
   updatedBy: string;
+
+  @HasMany(() => Game, { foreignKey: 'createdBy' })
+  @Expose()
+  games: Game[];
+
+  @BelongsToMany(() => Achievement, () => UserAchievement)
+  @Expose()
+  achievements: Achievement[];
 
   @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'creator' })
   @Expose()

@@ -6,6 +6,7 @@ import { User } from './entities/user.entity';
 import { Op } from 'sequelize';
 import { RequestAuthentificate } from 'src/appTypes/request';
 import { Sequelize } from 'sequelize-typescript';
+import { AchievementsService } from 'src/achievements/achievements.service';
 
 @Injectable()
 export class UsersService {
@@ -13,6 +14,7 @@ export class UsersService {
     @InjectModel(User)
     private userModel: typeof User,
     private readonly sequelize: Sequelize,
+    private readonly achievementsService: AchievementsService,
   ) {}
   create(createUserDto: CreateUserDto) {
     return this.sequelize.transaction(async (transaction) => {
@@ -74,5 +76,17 @@ export class UsersService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
+  }
+
+  findAllGames(req: RequestAuthentificate) {
+    return req.user.getGames();
+  }
+
+  findAllAchievements(req: RequestAuthentificate) {
+    return req.user.getAchievements();
+  }
+
+  findAllAchievementsProgress(req: RequestAuthentificate) {
+    return this.achievementsService.getUserAchievementsProgress(req.user);
   }
 }

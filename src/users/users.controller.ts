@@ -1,34 +1,28 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { JwtAuthGuard } from 'src/authentification/guard/jwt-auth.guard';
+import { RequestAuthentificate } from 'src/appTypes/request';
+import { ResponseMessage } from 'src/decorator/response.message.decorator';
 
+@UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @Post()
-  // create(@Body() createUserDto: CreateUserDto) {
-  //   return this.usersService.create(createUserDto);
-  // }
+  @Get('me/games')
+  @ResponseMessage('Récupération des parties du joueur')
+  findAll(@Req() req: RequestAuthentificate) {
+    return this.usersService.findAllGames(req);
+  }
 
-  // @Get()
-  // findAll() {
-  //   return this.usersService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
+  @Get('me/achievements')
+  @ResponseMessage('Récupération des achievement du joueur')
+  findAllAchievements(@Req() req: RequestAuthentificate) {
+    return this.usersService.findAllAchievements(req);
+  }
+  @Get('me/achievements/progress')
+  @ResponseMessage('Récupération de la progression des achievement du joueur')
+  findAllAchievementsProgress(@Req() req: RequestAuthentificate) {
+    return this.usersService.findAllAchievementsProgress(req);
+  }
 }

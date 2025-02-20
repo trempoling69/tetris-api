@@ -1,7 +1,14 @@
 import {
+  BelongsToManyAddAssociationsMixin,
+  BelongsToManyGetAssociationsMixin,
+} from 'sequelize';
+import { CreateAchievementDto } from '../dto/create-achievement.dto';
+import { Exclude, Expose } from 'class-transformer';
+import {
   BeforeCreate,
   BeforeUpdate,
   BelongsTo,
+  BelongsToMany,
   Column,
   DataType,
   ForeignKey,
@@ -9,13 +16,15 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { Exclude, Expose } from 'class-transformer';
-import { CreateGameDto } from '../dto/create-game.dto';
+import { UserAchievement } from 'src/user-achievements/entities/user-achievements.entity';
 import { User } from 'src/users/entities/user.entity';
 
 @Exclude()
 @Table
-export class Game extends Model<Game, CreateGameDto> {
+export class Achievement extends Model<Achievement, CreateAchievementDto> {
+  declare addUsers: BelongsToManyAddAssociationsMixin<User, string>;
+  declare getUsers: BelongsToManyGetAssociationsMixin<User>;
+
   @PrimaryKey
   @Column({
     allowNull: false,
@@ -26,24 +35,39 @@ export class Game extends Model<Game, CreateGameDto> {
   id: string;
 
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
   @Expose()
-  score: number;
+  name: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  @Expose()
+  description: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  @Expose()
+  conditionType: string;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
-  lines_cleared: number;
+  @Expose()
+  conditionValue: number;
 
   @Column({
-    type: DataType.INTEGER,
-    allowNull: false,
+    type: DataType.STRING,
+    allowNull: true,
   })
   @Expose()
-  duration: number;
+  icon_url: string | null;
 
   @Column({
     type: DataType.DATE,
@@ -52,13 +76,9 @@ export class Game extends Model<Game, CreateGameDto> {
   @Expose()
   createdAt: string;
 
-  @ForeignKey(() => User)
-  @Column({
-    type: DataType.UUID,
-    allowNull: true,
-  })
+  @BelongsToMany(() => User, () => UserAchievement)
   @Expose()
-  createdBy: string;
+  users: User[];
 
   @ForeignKey(() => User)
   @Column({
@@ -66,7 +86,15 @@ export class Game extends Model<Game, CreateGameDto> {
     allowNull: true,
   })
   @Expose()
-  updatedBy: string;
+  createdBy: string | null;
+
+  @ForeignKey(() => User)
+  @Column({
+    type: DataType.UUID,
+    allowNull: true,
+  })
+  @Expose()
+  updatedBy: string | null;
 
   @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'creator' })
   @Expose()
@@ -77,14 +105,14 @@ export class Game extends Model<Game, CreateGameDto> {
   updater: User;
 
   @BeforeCreate
-  static setCreatedBy(instance: Game, options: { userId: string }) {
+  static setCreatedBy(instance: Achievement, options: { userId: string }) {
     if (options.userId) {
       instance.createdBy = options.userId;
     }
   }
 
   @BeforeUpdate
-  static setUpdatedBy(instance: Game, options: { userId: string }) {
+  static setUpdatedBy(instance: Achievement, options: { userId: string }) {
     if (options.userId) {
       instance.updatedBy = options.userId;
     }

@@ -27,15 +27,9 @@ export class GamesController {
     return this.gamesService.create(createGameDto, req);
   }
 
-  @Get()
-  @ResponseMessage('Récupération des parties du joueur')
-  findAll(@Request() req: RequestAuthentificate) {
-    return this.gamesService.findAllGameOfAPlayer(req.user.id);
-  }
-
   @Get(':id')
-  @ResponseMessage("Récupération d'une partie du joueur")
-  findOne(@Param('id') id: string, @Request() req: RequestAuthentificate) {
-    return this.gamesService.findOne(id, req.user.id);
+  @ResponseMessage("Récupération d'une partie")
+  findOne(@Param('id') id: string) {
+    return this.gamesService.findOne(id);
   }
 }
