@@ -1,0 +1,3006 @@
+{
+	"info": {
+		"_postman_id": "8526107c-2d66-46f6-a132-34eb53290f45",
+		"name": "TetrisApi",
+		"description": "Documentation for the API of a mobile game based on Tetris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21503301"
+	},
+	"item": [
+		{
+			"name": "Authentification",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Cassandra\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authentification/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authentification",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"Cassandra\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/authentification/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"authentification",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "277"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"115-XROH8DHTKzQ92vY2ZIhGJiguGR4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:06:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Utilisateur créé avec succès\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhYWI3YTYyYi02NzVmLTQ0ODctYmMwOC0yOTFkMjQ2NDI1ZjEiLCJpYXQiOjE3NDAxNjExNzUsImV4cCI6MTc0MDc2NTk3NX0.WcBPQKjb2RSoyMj2eUjxdoovOtEqIS3-72TFHCCWbc4\"\n    }\n}"
+						},
+						{
+							"name": "username already exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"Sabrina\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/authentification/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authentification",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-96L95kv7JrhWGMKfPy+OteSomGg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:00:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Le nom d'utilisateur est déjà utilisé\"\n}"
+						},
+						{
+							"name": "server error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"Sabrina\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/authentification/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authentification",
+										"register"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-rlKccw1E+/fV8niQk4oFitDfPro\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:04:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"message\": \"Internal server error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"John\",\n    \"password\":\"passwor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/authentification/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authentification",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"John\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/authentification/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"authentification",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "268"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10c-SWXmInPyVv6ibzCbBQmxnUdYq7k\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:07:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Connecté avec succès\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YzZlOWIxNy0zZjAyLTQ0YWQtYTBhMy0yNGQ4YTlhMjgzYmUiLCJpYXQiOjE3NDAxNjEyMzYsImV4cCI6MTc0MDc2NjAzNn0.m2mEbhC0lt9lNeLhYmYjDLId8Cm_r-AZ6DZhPrUHgu0\"\n    }\n}"
+						},
+						{
+							"name": "login error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"John\",\n    \"password\":\"passwor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/authentification/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authentification",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-SjnfAnHgVjoRfdJp8M/uQWfioGo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:08:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"Identifiant ou mot de passe incorrect\"\n}"
+						}
+					]
+				},
+				{
+					"name": "me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YzZlOWIxNy0zZjAyLTQ0YWQtYTBhMy0yNGQ4YTlhMjgzYmUiLCJpYXQiOjE3NDAxNjEyMzYsImV4cCI6MTc0MDc2NjAzNn0.m2mEbhC0lt9lNYmYjDLId8Cm_r-AZ6DZhPrUHgu0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/authentification/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"authentification",
+								"me"
+							]
+						},
+						"description": "Fetch the current user to get basic information about it"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/authentification/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"authentification",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ee-OEgOvY88CKTPdOUMW5NyQP6CmPc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:09:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Fetch current user\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"6c6e9b17-3f02-44ad-a0a3-24d8a9a283be\",\n        \"username\": \"John\",\n        \"last_connection\": \"2025-02-21T18:07:16.000Z\",\n        \"createdAt\": \"2025-02-19T15:46:05.000Z\",\n        \"createdBy\": null,\n        \"updatedBy\": null\n    }\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/authentification/me",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"authentification",
+										"me"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-dGnJzt6gv1nJjX6DJ9RztDWptng\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:09:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Unauthorized\",\n    \"statusCode\": 401\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "get one game",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/games/a1c6aba9-aff9-4e7d-9881-19ca0d766148",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"games",
+								"a1c6aba9-aff9-4e7d-9881-19ca0d766148"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/games/a1c6aba9-aff9-4e7d-9881-19ca0d766148",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"games",
+										"a1c6aba9-aff9-4e7d-9881-19ca0d766148"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "178"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b2-tDk22TLhpXXTkHjr03bCq3cCfyI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:12:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération d'une partie\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"id\": \"a1c6aba9-aff9-4e7d-9881-19ca0d766148\",\n        \"score\": 3700,\n        \"duration\": 168,\n        \"createdAt\": \"2025-02-21T18:11:22.000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "save player game",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"score\":3700,\n    \"lines_cleared\": 30,\n    \"duration\": 168\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/games",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"games"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"score\":3700,\n    \"lines_cleared\": 30,\n    \"duration\": 168\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/games",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"games"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "183"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b7-6vS+aW+TWuxMD/FxZIB31SD3+8A\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:11:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Partie enregistrée avec succès\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"a1c6aba9-aff9-4e7d-9881-19ca0d766148\",\n        \"score\": 3700,\n        \"duration\": 168,\n        \"createdAt\": \"2025-02-21T18:11:22.217Z\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Achievements",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Time played\",\n    \"description\": \"Jouer un total de 500 secondes\",\n    \"conditionType\": \"time_played\",\n    \"conditionValue\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/achievements",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"achievements"
+							]
+						},
+						"description": "This route is for configuration and development only\n\nIt have to be limited so every player can't access it"
+					},
+					"response": [
+						{
+							"name": "success - game played",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Vétéran\",\n    \"description\": \"Jouer sa 15ème partie\",\n    \"conditionType\": \"game_played\",\n    \"conditionValue\": 15\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/achievements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"achievements"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "231"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e7-Gq9G59nyuxFfVD4iqjPIIduuJhQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:14:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"579f53e5-e647-494f-bc87-5abece285769\",\n        \"name\": \"Vétéran\",\n        \"description\": \"Jouer sa 15ème partie\",\n        \"conditionType\": \"game_played\",\n        \"conditionValue\": 15,\n        \"createdAt\": \"2025-02-21T18:14:34.700Z\"\n    }\n}"
+						},
+						{
+							"name": "success - max score",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Début de la réussite\",\n    \"description\": \"Obtenir un score de 3500\",\n    \"conditionType\": \"max_score\",\n    \"conditionValue\": 3500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/achievements",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"achievements"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-hHIxE/AkidQxUWWTBw0OJ4rrNF8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:16:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"9124f6c6-442e-4398-92ad-bf5d99cc9b20\",\n        \"name\": \"Début de la réussite\",\n        \"description\": \"Obtenir un score de 3500\",\n        \"conditionType\": \"max_score\",\n        \"conditionValue\": 3500,\n        \"createdAt\": \"2025-02-21T18:16:01.860Z\"\n    }\n}"
+						},
+						{
+							"name": "success - line cleared",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"total line cleared\",\n    \"description\": \"Compléter 50 lignes\",\n    \"conditionType\": \"lines_cleared_total\",\n    \"conditionValue\": 50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/achievements",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"achievements"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-zpbFx7acwhzkY5I3WxxzLJe7/Rw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:18:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"2e1d085f-29ca-4616-8354-a8d96e55f661\",\n        \"name\": \"total line cleared\",\n        \"description\": \"Compléter 50 lignes\",\n        \"conditionType\": \"lines_cleared_total\",\n        \"conditionValue\": 50,\n        \"createdAt\": \"2025-02-21T18:18:43.616Z\"\n    }\n}"
+						},
+						{
+							"name": "success - time played",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Time played\",\n    \"description\": \"Jouer un total de 500 secondes\",\n    \"conditionType\": \"time_played\",\n    \"conditionValue\": 500\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/achievements",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"achievements"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "242"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f2-pWpzdAZEyNYNYjWKv4pjWNWYOxU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:19:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"\",\n    \"statusCode\": 201,\n    \"data\": {\n        \"id\": \"1393d8c1-5004-444a-b818-e9210cdb7b0f\",\n        \"name\": \"Time played\",\n        \"description\": \"Jouer un total de 500 secondes\",\n        \"conditionType\": \"time_played\",\n        \"conditionValue\": 500,\n        \"createdAt\": \"2025-02-21T18:19:21.741Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/achievements",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"achievements"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/achievements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"achievements"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1803"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"70b-bfU+FPe2UVFt8cT4MkHohmv4bRQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:19:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"1393d8c1-5004-444a-b818-e9210cdb7b0f\",\n            \"name\": \"Time played\",\n            \"description\": \"Jouer un total de 500 secondes\",\n            \"conditionType\": \"time_played\",\n            \"conditionValue\": 500,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:19:21.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"166e1a90-f0a9-459e-add3-74e7c3fc5ea7\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa première partie\",\n            \"conditionType\": \"game_played\",\n            \"conditionValue\": 1,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-20T12:07:26.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"201fc3d1-f0eb-4dfd-8eeb-32d7e8e5c4ae\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa 10ème partie\",\n            \"conditionType\": \"game_played\",\n            \"conditionValue\": 10,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-20T13:20:50.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"2e1d085f-29ca-4616-8354-a8d96e55f661\",\n            \"name\": \"total line cleared\",\n            \"description\": \"Compléter 50 lignes\",\n            \"conditionType\": \"lines_cleared_total\",\n            \"conditionValue\": 50,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:18:43.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"579f53e5-e647-494f-bc87-5abece285769\",\n            \"name\": \"Vétéran\",\n            \"description\": \"Jouer sa 15ème partie\",\n            \"conditionType\": \"game_played\",\n            \"conditionValue\": 15,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:14:34.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"8314f59c-ba86-4fcc-86f1-9020b5f4bae0\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa 5ème partie\",\n            \"conditionType\": \"game_played\",\n            \"conditionValue\": 5,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-20T13:20:19.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"9124f6c6-442e-4398-92ad-bf5d99cc9b20\",\n            \"name\": \"Début de la réussite\",\n            \"description\": \"Obtenir un score de 3500\",\n            \"conditionType\": \"max_score\",\n            \"conditionValue\": 3500,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:16:01.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get player achievements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/me/achievements",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me",
+								"achievements"
+							]
+						},
+						"description": "Get every achievement that is complete by the player"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/users/me/achievements",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"achievements"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1102"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44e-dITTNQIaZb7ClIaQRddK8rcSdr4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:20:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des achievement du joueur\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"1393d8c1-5004-444a-b818-e9210cdb7b0f\",\n            \"name\": \"Time played\",\n            \"description\": \"Jouer un total de 500 secondes\",\n            \"conditionType\": \"time_played\",\n            \"conditionValue\": 500,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:19:21.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"166e1a90-f0a9-459e-add3-74e7c3fc5ea7\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa première partie\",\n            \"conditionType\": \"game_played\",\n            \"conditionValue\": 1,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-20T12:07:26.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"2e1d085f-29ca-4616-8354-a8d96e55f661\",\n            \"name\": \"total line cleared\",\n            \"description\": \"Compléter 50 lignes\",\n            \"conditionType\": \"lines_cleared_total\",\n            \"conditionValue\": 50,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:18:43.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        },\n        {\n            \"id\": \"9124f6c6-442e-4398-92ad-bf5d99cc9b20\",\n            \"name\": \"Début de la réussite\",\n            \"description\": \"Obtenir un score de 3500\",\n            \"conditionType\": \"max_score\",\n            \"conditionValue\": 3500,\n            \"icon_url\": null,\n            \"createdAt\": \"2025-02-21T18:16:01.000Z\",\n            \"createdBy\": null,\n            \"updatedBy\": null\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get player games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/me/games",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me",
+								"games"
+							]
+						},
+						"description": "Get every game of the player"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/users/me/games",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"games"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "472"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d8-v8yZv0uGG4ZRqMEVnYLa/pbYJnM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:22:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des parties du joueur\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"26af7bc5-bd11-4acd-80ea-f4b393c45280\",\n            \"score\": 3700,\n            \"lines_cleared\": 30,\n            \"duration\": 168,\n            \"createdAt\": \"2025-02-21T18:20:29.000Z\"\n        },\n        {\n            \"id\": \"2e6ead0a-2108-426d-b811-3921d6b8c267\",\n            \"score\": 4000,\n            \"lines_cleared\": 30,\n            \"duration\": 168,\n            \"createdAt\": \"2025-02-21T16:50:57.000Z\"\n        },\n        {\n            \"id\": \"a1c6aba9-aff9-4e7d-9881-19ca0d766148\",\n            \"score\": 3700,\n            \"lines_cleared\": 30,\n            \"duration\": 168,\n            \"createdAt\": \"2025-02-21T18:11:22.000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get player achievement progress",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/me/achievements/progress",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me",
+								"achievements",
+								"progress"
+							]
+						},
+						"description": "Get the progress of the player in every achievement"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/users/me/achievements/progress",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"achievements",
+										"progress"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1308"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51c-2/YfuQw0KnNqEq77uKjf2eEWCuM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:22:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération de la progression des achievement du joueur\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"id\": \"1393d8c1-5004-444a-b818-e9210cdb7b0f\",\n            \"name\": \"Time played\",\n            \"description\": \"Jouer un total de 500 secondes\",\n            \"required\": 500,\n            \"progress\": 504,\n            \"percentage\": 100,\n            \"unlocked\": true\n        },\n        {\n            \"id\": \"166e1a90-f0a9-459e-add3-74e7c3fc5ea7\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa première partie\",\n            \"required\": 1,\n            \"progress\": 3,\n            \"percentage\": 100,\n            \"unlocked\": true\n        },\n        {\n            \"id\": \"201fc3d1-f0eb-4dfd-8eeb-32d7e8e5c4ae\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa 10ème partie\",\n            \"required\": 10,\n            \"progress\": 3,\n            \"percentage\": 30,\n            \"unlocked\": false\n        },\n        {\n            \"id\": \"2e1d085f-29ca-4616-8354-a8d96e55f661\",\n            \"name\": \"total line cleared\",\n            \"description\": \"Compléter 50 lignes\",\n            \"required\": 50,\n            \"progress\": 90,\n            \"percentage\": 100,\n            \"unlocked\": true\n        },\n        {\n            \"id\": \"579f53e5-e647-494f-bc87-5abece285769\",\n            \"name\": \"Vétéran\",\n            \"description\": \"Jouer sa 15ème partie\",\n            \"required\": 15,\n            \"progress\": 3,\n            \"percentage\": 20,\n            \"unlocked\": false\n        },\n        {\n            \"id\": \"8314f59c-ba86-4fcc-86f1-9020b5f4bae0\",\n            \"name\": \"Première partie\",\n            \"description\": \"Jouer sa 5ème partie\",\n            \"required\": 5,\n            \"progress\": 3,\n            \"percentage\": 60,\n            \"unlocked\": false\n        },\n        {\n            \"id\": \"9124f6c6-442e-4398-92ad-bf5d99cc9b20\",\n            \"name\": \"Début de la réussite\",\n            \"description\": \"Obtenir un score de 3500\",\n            \"required\": 3500,\n            \"progress\": 4000,\n            \"percentage\": 100,\n            \"unlocked\": true\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "player profil",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/me/profil",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"me",
+								"profil"
+							]
+						},
+						"description": "Get the profil with some stats of the player"
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/users/me/profil",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"profil"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bb-P35ehPIcT/TUZYCd5grfXf/jNu4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:24:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération du profil du joueur\",\n    \"statusCode\": 200,\n    \"data\": {\n        \"totalGames\": 3,\n        \"timePlayed\": 504,\n        \"bestScore\": 4000,\n        \"totalScore\": 11400,\n        \"achievementComplete\": 4,\n        \"totalAchievement\": 7\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "This section is to manage player informations",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "leaderboard",
+			"item": [
+				{
+					"name": "based on score",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/leaderboards/bestScore?period=all-time&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"leaderboards",
+								"bestScore"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "all-time"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get the leaderboard of every player based on the best score thay made\n\nThe default value for period is 'all-time'\n\nThe default value for limit is '10'"
+					},
+					"response": [
+						{
+							"name": "success - weekly",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/leaderboards/bestScore?period=weekly&limit=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"leaderboards",
+										"bestScore"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "weekly"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-fO3o/rAIdkTEnNhjpc7bTgz/wVw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:27:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des meilleurs joueurs par meilleurs score\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"best_score\": 4600,\n            \"player\": {\n                \"username\": \"Sabrina\"\n            }\n        },\n        {\n            \"best_score\": 4000,\n            \"player\": {\n                \"username\": \"John\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "success - daily",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/leaderboards/bestScore?period=daily&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"leaderboards",
+										"bestScore"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "daily"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-xNSoUTnjAbRzoDw9yRAgOcrXGas\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:27:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des meilleurs joueurs par meilleurs score\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"best_score\": 4000,\n            \"player\": {\n                \"username\": \"John\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "success - all time",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/leaderboards/bestScore?period=all-time&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"leaderboards",
+										"bestScore"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "all-time"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-fO3o/rAIdkTEnNhjpc7bTgz/wVw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:28:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des meilleurs joueurs par meilleurs score\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"best_score\": 4600,\n            \"player\": {\n                \"username\": \"Sabrina\"\n            }\n        },\n        {\n            \"best_score\": 4000,\n            \"player\": {\n                \"username\": \"John\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "based on total score",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/leaderboards/totalScore?period=all-time&limit=10",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"leaderboards",
+								"totalScore"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "all-time"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get the leaderboard of every player based on the total score thay made\n\nThe default value for period is 'all-time'\n\nThe default value for limit is '10'"
+					},
+					"response": [
+						{
+							"name": "success - weekly",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/leaderboards/totalScore?period=weekly&limit=10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"leaderboards",
+										"totalScore"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "weekly"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-8ec1PcW9gKeZkEUk7kSOVHi1bAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:26:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des meilleurs joueurs par score total\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"total_score\": 15200,\n            \"player\": {\n                \"username\": \"Sabrina\"\n            }\n        },\n        {\n            \"total_score\": 11400,\n            \"player\": {\n                \"username\": \"John\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "success - daily",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/leaderboards/totalScore?period=daily&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"leaderboards",
+										"totalScore"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "daily"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "143"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8f-zD6Wwq1gRmlvEVfQPm7B0xvdLDk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:26:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des meilleurs joueurs par score total\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"total_score\": 11400,\n            \"player\": {\n                \"username\": \"John\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "success all time",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/leaderboards/totalScore?period=all-time&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"leaderboards",
+										"totalScore"
+									],
+									"query": [
+										{
+											"key": "period",
+											"value": "all-time"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "197"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c5-8ec1PcW9gKeZkEUk7kSOVHi1bAg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 21 Feb 2025 18:27:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Récupération des meilleurs joueurs par score total\",\n    \"statusCode\": 200,\n    \"data\": [\n        {\n            \"total_score\": 15200,\n            \"player\": {\n                \"username\": \"Sabrina\"\n            }\n        },\n        {\n            \"total_score\": 11400,\n            \"player\": {\n                \"username\": \"John\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YzZlOWIxNy0zZjAyLTQ0YWQtYTBhMy0yNGQ4YTlhMjgzYmUiLCJpYXQiOjE3NDAxNjEyMzYsImV4cCI6MTc0MDc2NjAzNn0.m2mEbhC0lt9lNeLhYmYjDLId8Cm_r-AZ6DZhPrUHgu0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3001",
+			"type": "string"
+		}
+	]
+}

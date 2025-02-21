@@ -63,7 +63,10 @@ export class AuthentificationService {
       registerData.username,
     );
     if (user) {
-      throw new HttpException('Le user existe déjà', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        "Le nom d'utilisateur est déjà utilisé",
+        HttpStatus.BAD_REQUEST,
+      );
     }
     const hashedPassword = await this.cryptoService.generateHash(
       registerData.password,
@@ -73,7 +76,7 @@ export class AuthentificationService {
         ...registerData,
         password: hashedPassword,
       });
-      return createdUser;
+      return this.login(createdUser);
     } catch (_err) {
       throw new HttpException(
         'Une erreur est survenue',

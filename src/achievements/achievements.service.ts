@@ -17,6 +17,10 @@ export class AchievementsService {
     return this.achievementModel.findAll();
   }
 
+  count() {
+    return this.achievementModel.count();
+  }
+
   create(createAchievementDto: CreateAchievementDto) {
     return this.achievementModel.create(createAchievementDto);
   }

@@ -36,6 +36,7 @@ export class Game extends Model<Game, CreateGameDto> {
     type: DataType.INTEGER,
     allowNull: false,
   })
+  @Expose()
   lines_cleared: number;
 
   @Column({
@@ -58,6 +59,18 @@ export class Game extends Model<Game, CreateGameDto> {
   total_score: number;
 
   @Column({
+    type: DataType.VIRTUAL,
+  })
+  @Expose()
+  play_time: number;
+
+  @Column({
+    type: DataType.VIRTUAL,
+  })
+  @Expose()
+  total_games: number;
+
+  @Column({
     type: DataType.DATE,
     allowNull: true,
   })
@@ -76,7 +89,6 @@ export class Game extends Model<Game, CreateGameDto> {
     type: DataType.UUID,
     allowNull: true,
   })
-  @Expose()
   updatedBy: string;
 
   @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'player' })

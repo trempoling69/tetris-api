@@ -32,4 +32,42 @@ export class GamesService {
   findOne(id: string) {
     return this.gameModel.findOne({ where: { id } });
   }
+
+  getGamesStatOfAPlayer(userId: string) {
+    return this.gameModel.findOne({
+      attributes: [
+        'createdBy',
+        [
+          this.gameModel.sequelize.fn(
+            'MAX',
+            this.gameModel.sequelize.col('score'),
+          ),
+          'best_score',
+        ],
+        [
+          this.gameModel.sequelize.fn(
+            'SUM',
+            this.gameModel.sequelize.col('score'),
+          ),
+          'total_score',
+        ],
+        [
+          this.gameModel.sequelize.fn(
+            'SUM',
+            this.gameModel.sequelize.col('duration'),
+          ),
+          'play_time',
+        ],
+        [
+          this.gameModel.sequelize.fn(
+            'COUNT',
+            this.gameModel.sequelize.col('id'),
+          ),
+          'total_games',
+        ],
+      ],
+      group: ['createdBy'],
+      where: { createdBy: userId },
+    });
+  }
 }

@@ -15,6 +15,12 @@ export class UsersController {
     return this.usersService.findAllGames(req);
   }
 
+  @Get('me/profil')
+  @ResponseMessage('Récupération du profil du joueur')
+  findPlayerProfil(@Req() req: RequestAuthentificate) {
+    return this.usersService.getPlayerProfil(req);
+  }
+
   @Get('me/achievements')
   @ResponseMessage('Récupération des achievement du joueur')
   findAllAchievements(@Req() req: RequestAuthentificate) {

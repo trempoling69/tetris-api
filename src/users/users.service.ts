@@ -7,6 +7,7 @@ import { Op } from 'sequelize';
 import { RequestAuthentificate } from 'src/appTypes/request';
 import { Sequelize } from 'sequelize-typescript';
 import { AchievementsService } from 'src/achievements/achievements.service';
+import { GamesService } from 'src/games/games.service';
 
 @Injectable()
 export class UsersService {
@@ -15,6 +16,7 @@ export class UsersService {
     private userModel: typeof User,
     private readonly sequelize: Sequelize,
     private readonly achievementsService: AchievementsService,
+    private readonly gamesService: GamesService,
   ) {}
   create(createUserDto: CreateUserDto) {
     return this.sequelize.transaction(async (transaction) => {
@@ -88,5 +90,24 @@ export class UsersService {
 
   findAllAchievementsProgress(req: RequestAuthentificate) {
     return this.achievementsService.getUserAchievementsProgress(req.user);
+  }
+
+  async getPlayerProfil(req: RequestAuthentificate) {
+    const gameStats = await this.gamesService.getGamesStatOfAPlayer(
+      req.user.id,
+    );
+
+    const totalAchievement = await this.achievementsService.count();
+
+    const userAchievement = await req.user.getAchievements();
+
+    return {
+      totalGames: gameStats.total_games,
+      timePlayed: gameStats.play_time,
+      bestScore: gameStats.best_score,
+      totalScore: gameStats.total_score,
+      achievementComplete: userAchievement.length,
+      totalAchievement,
+    };
   }
 }
