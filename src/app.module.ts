@@ -8,6 +8,7 @@ import { AuthentificationModule } from './authentification/authentification.modu
 import { GamesModule } from './games/games.module';
 import { AchievementsModule } from './achievements/achievements.module';
 import { UserAchievementsModule } from './user-achievements/user-achievements.module';
+import { LeaderboardsModule } from './leaderboards/leaderboards.module';
 import databaseConfig from './sequelize/config';
 
 @Module({
@@ -25,6 +26,7 @@ import databaseConfig from './sequelize/config';
     GamesModule,
     AchievementsModule,
     UserAchievementsModule,
+    LeaderboardsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -10,6 +10,9 @@ export default (configService: ConfigService): SequelizeModuleOptions => {
   return {
     dialect:
       (configService.get('DB_DIALECT') as Dialect | undefined) || 'mysql',
+    dialectOptions: {
+      decimalNumbers: true,
+    },
     host: configService.get('DB_HOST'),
     port: parseInt(configService.get('DB_PORT')!, 10) || 3306,
     username: configService.get('DB_USERNAME'),

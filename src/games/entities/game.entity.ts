@@ -46,6 +46,18 @@ export class Game extends Model<Game, CreateGameDto> {
   duration: number;
 
   @Column({
+    type: DataType.VIRTUAL,
+  })
+  @Expose()
+  best_score: number;
+
+  @Column({
+    type: DataType.VIRTUAL,
+  })
+  @Expose()
+  total_score: number;
+
+  @Column({
     type: DataType.DATE,
     allowNull: true,
   })
@@ -57,7 +69,6 @@ export class Game extends Model<Game, CreateGameDto> {
     type: DataType.UUID,
     allowNull: true,
   })
-  @Expose()
   createdBy: string;
 
   @ForeignKey(() => User)
@@ -68,9 +79,9 @@ export class Game extends Model<Game, CreateGameDto> {
   @Expose()
   updatedBy: string;
 
-  @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'creator' })
+  @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'player' })
   @Expose()
-  creator: User;
+  player: User;
 
   @BelongsTo(() => User, { foreignKey: 'updatedBy', as: 'updater' })
   @Expose()
