@@ -3,12 +3,10 @@ import { AppModule } from './app.module';
 import helmet from 'helmet';
 import { ClassSerializerInterceptor, ValidationPipe } from '@nestjs/common';
 import { TransformationInterceptor } from './interceptor/response.interceptor';
-import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.use(cors());
   app.use(helmet());
   app.setGlobalPrefix('api');
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
