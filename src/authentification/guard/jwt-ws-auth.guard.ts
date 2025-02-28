@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ExecutionContext } from '@nestjs/common';
 import { WsException } from '@nestjs/websockets';
@@ -12,6 +12,7 @@ export class JwtWsGuard extends AuthGuard('ws') {
     try {
       const authHeader = client.handshake.headers.authorization;
       if (!authHeader) {
+        client.emit('unauthorized', 'Not authorized');
         client.disconnect();
         throw new WsException('Unauthorized');
       }
@@ -30,6 +31,7 @@ export class JwtWsGuard extends AuthGuard('ws') {
 
     if (err || !user) {
       console.error('WebSocket Auth Error:', err?.message || 'Unauthorized');
+      client.emit('unauthorized', 'Not authorized');
       client.disconnect();
       throw new WsException('Unauthorized');
     }
