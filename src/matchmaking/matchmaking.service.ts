@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { Server, Socket } from 'socket.io';
+import { DuelsService } from 'src/duels/duels.service';
 
 interface Player {
   socket: Socket;
@@ -11,6 +13,7 @@ interface Player {
 interface GameRoom {
   roomId: string;
   players: Player[];
+  duelId: string;
   seed: number;
   timeout?: NodeJS.Timeout;
 }
@@ -20,11 +23,22 @@ export class MatchmakingService {
   private queue: Player[] = [];
   private activeGames: Map<string, GameRoom> = new Map();
 
-  joinQueue(socket: Socket, userId: string, server: Server) {
-    if (this.checkIfPlayerIsInGame(userId, socket, server)) {
+  private server: Server | null = null;
+
+  constructor(
+    private eventEmitter: EventEmitter2,
+    private readonly duelsService: DuelsService,
+  ) {}
+
+  setServer(server: Server) {
+    this.server = server;
+  }
+
+  joinQueue(socket: Socket, userId: string) {
+    if (this.checkIfPlayerIsInGame(userId, socket)) {
       return;
     }
-    this.addPlayerInQueue(userId, socket, server);
+    this.addPlayerInQueue(userId, socket);
   }
 
   quitQueue(socket: Socket, server: Server) {
@@ -56,7 +70,7 @@ export class MatchmakingService {
     this.queue = this.queue.filter((player) => player.socket.id !== socket.id);
   }
 
-  checkIfPlayerIsInGame(userId: string, socket: Socket, server: Server) {
+  checkIfPlayerIsInGame(userId: string, socket: Socket) {
     for (const game of this.activeGames.values()) {
       const player = game.players.find((p) => p.userId === userId);
       if (player) {
@@ -68,40 +82,24 @@ export class MatchmakingService {
           game.timeout = undefined;
         }
 
-        server.to(game.roomId).emit('playerReconnected', { userId });
+        this.server
+          .to(game.roomId)
+          .emit('playerReconnected', {
+            userId,
+            seed: game.seed,
+            duelId: game.duelId,
+          });
 
         return true;
       }
     }
   }
 
-  addPlayerInQueue(userId: string, socket: Socket, server: Server) {
+  addPlayerInQueue(userId: string, socket: Socket) {
     this.queue.push({ socket, userId });
 
     if (this.queue.length >= 2) {
-      const player1 = this.queue.shift();
-      const player2 = this.queue.shift();
-
-      if (player1 && player2) {
-        const roomId = `room-${player1.userId}-${player2.userId}`;
-        const seed = Math.floor(Math.random() * 100000);
-
-        player1.socket.join(roomId);
-        player2.socket.join(roomId);
-
-        const game: GameRoom = {
-          roomId,
-          players: [
-            { ...player1, score: 0 },
-            { ...player2, score: 0 },
-          ],
-          seed,
-        };
-
-        this.activeGames.set(roomId, game);
-
-        server.to(roomId).emit('matchFound', { roomId, seed });
-      }
+      this.eventEmitter.emit('matchmaking.check');
     }
   }
 
@@ -120,5 +118,46 @@ export class MatchmakingService {
         return;
       }
     }
+  }
+
+  @OnEvent('matchmaking.check')
+  private matchPlayers() {
+    while (this.queue.length >= 2) {
+      const player1 = this.queue.shift();
+      const player2 = this.queue.shift();
+
+      if (player1 && player2) {
+        this.initGame(player1, player2);
+      }
+    }
+  }
+
+  private async initGame(player1: Player, player2: Player) {
+    const roomId = `room-${player1.userId}-${player2.userId}`;
+    const seed = Math.floor(Math.random() * 100000);
+
+    player1.socket.join(roomId);
+    player2.socket.join(roomId);
+
+    const duel = await this.duelsService.create({
+      player1Id: player1.userId,
+      player2Id: player2.userId,
+    });
+
+    const game: GameRoom = {
+      roomId,
+      duelId: duel.id,
+      players: [
+        { ...player1, score: 0 },
+        { ...player2, score: 0 },
+      ],
+      seed,
+    };
+
+    this.activeGames.set(roomId, game);
+
+    this.server
+      .to(roomId)
+      .emit('matchFound', { roomId, seed, duelId: duel.id });
   }
 }

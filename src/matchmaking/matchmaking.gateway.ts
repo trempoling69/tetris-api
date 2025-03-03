@@ -24,6 +24,7 @@ export class MatchmakingGateway
 
   afterInit(server: Server) {
     console.log('WebSocket Server Initialized');
+    this.matchmakingService.setServer(server);
   }
 
   @UseGuards(JwtWsGuard)
@@ -44,7 +45,7 @@ export class MatchmakingGateway
     @MessageBody() data: { userId: string },
   ) {
     console.log('join queue');
-    return this.matchmakingService.joinQueue(socket, data.userId, this.server);
+    return this.matchmakingService.joinQueue(socket, data.userId);
   }
 
   @UseGuards(JwtWsGuard)

@@ -12,6 +12,7 @@ import {
 import { Exclude, Expose } from 'class-transformer';
 import { CreateGameDto } from '../dto/create-game.dto';
 import { User } from 'src/users/entities/user.entity';
+import { Duel } from 'src/duels/entities/duel.entity';
 
 @Exclude()
 @Table
@@ -77,6 +78,13 @@ export class Game extends Model<Game, CreateGameDto> {
   @Expose()
   createdAt: string;
 
+  @ForeignKey(() => Duel)
+  @Column({
+    type: DataType.UUID,
+    allowNull: true,
+  })
+  duelId: string | null;
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.UUID,
@@ -90,6 +98,10 @@ export class Game extends Model<Game, CreateGameDto> {
     allowNull: true,
   })
   updatedBy: string;
+
+  @BelongsTo(() => Duel, { foreignKey: 'duelId', as: 'duel' })
+  @Expose()
+  duel: Duel;
 
   @BelongsTo(() => User, { foreignKey: 'createdBy', as: 'player' })
   @Expose()

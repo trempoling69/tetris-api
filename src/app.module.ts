@@ -10,7 +10,9 @@ import { AchievementsModule } from './achievements/achievements.module';
 import { UserAchievementsModule } from './user-achievements/user-achievements.module';
 import { LeaderboardsModule } from './leaderboards/leaderboards.module';
 import { MatchmakingModule } from './matchmaking/matchmaking.module';
+import { DuelsModule } from './duels/duels.module';
 import databaseConfig from './sequelize/config';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import databaseConfig from './sequelize/config';
       useFactory: databaseConfig,
       inject: [ConfigService],
     }),
+    EventEmitterModule.forRoot(),
     UsersModule,
     AuthentificationModule,
     GamesModule,
@@ -29,6 +32,7 @@ import databaseConfig from './sequelize/config';
     UserAchievementsModule,
     LeaderboardsModule,
     MatchmakingModule,
+    DuelsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

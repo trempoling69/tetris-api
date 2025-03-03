@@ -21,6 +21,7 @@ import {
   HasManyGetAssociationsMixin,
 } from 'sequelize';
 import { Game } from 'src/games/entities/game.entity';
+import { Duel } from 'src/duels/entities/duel.entity';
 
 @Exclude()
 @Table
@@ -85,6 +86,17 @@ export class User extends Model<User, CreateUserDto> {
   })
   @Expose()
   updatedBy: string;
+
+  @HasMany(() => Duel, { foreignKey: 'player1Id' })
+  duelsAsPlayer1: Duel[];
+
+  @HasMany(() => Duel, { foreignKey: 'player2Id' })
+  duelsAsPlayer2: Duel[];
+
+  @Expose()
+  get duels(): Duel[] {
+    return [...(this.duelsAsPlayer1 || []), ...(this.duelsAsPlayer2 || [])];
+  }
 
   @HasMany(() => Game, { foreignKey: 'createdBy' })
   @Expose()
