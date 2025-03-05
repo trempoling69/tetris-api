@@ -12,6 +12,8 @@ services:
       - backendNetwork
     volumes:
       - tetris-mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -32,12 +34,19 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DEV_PORT}:${DEV_PORT}"
     depends_on:
       db:
         condition: service_healthy
     networks:
       - backendNetwork
       - vpsNetwork
+    volumes:
+      - .:/usr/src/app
+    command: >
+      sh -c "npm run db:migrate && 
+             npm run start:dev"
 
 networks:
   backendNetwork:
@@ -46,8 +55,6 @@ networks:
   vpsNetwork:
     name: vpsNetwork
     driver: bridge
-    external: true
 volumes:
   tetris-mysql-data:
-    name: tetris-mysql-data
-    external: true
+    name: testris-mysql-data

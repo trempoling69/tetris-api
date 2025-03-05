@@ -1,12 +1,17 @@
-FROM node:20
+FROM public.ecr.aws/docker/library/node:20
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm install --legacy-peer-deps
+COPY package*.json ./
 
-RUN npm install --save-dev sequelize-cli --legacy-peer-deps
+RUN npm ci
+
+RUN npm install --save-dev sequelize-cli
 
 COPY . .
 
+RUN npm run build
+
 EXPOSE ${DEV_PORT}
+
+CMD [ "npm", "run", "start:prod" ]
