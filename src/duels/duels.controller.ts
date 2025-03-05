@@ -1,8 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { DuelsService } from './duels.service';
 import { CreateDuelDto } from './dto/create-duel.dto';
-import { UpdateDuelDto } from './dto/update-duel.dto';
-
 @Controller('duels')
 export class DuelsController {
   constructor(private readonly duelsService: DuelsService) {}
@@ -23,8 +29,8 @@ export class DuelsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDuelDto: UpdateDuelDto) {
-    return this.duelsService.update(+id, updateDuelDto);
+  update(@Param('id') id: string) {
+    return this.duelsService.update(+id);
   }
 
   @Delete(':id')

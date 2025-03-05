@@ -82,13 +82,11 @@ export class MatchmakingService {
           game.timeout = undefined;
         }
 
-        this.server
-          .to(game.roomId)
-          .emit('playerReconnected', {
-            userId,
-            seed: game.seed,
-            duelId: game.duelId,
-          });
+        this.server.to(game.roomId).emit('playerReconnected', {
+          userId,
+          seed: game.seed,
+          duelId: game.duelId,
+        });
 
         return true;
       }

@@ -77,7 +77,8 @@ export class AuthentificationService {
         password: hashedPassword,
       });
       return this.login(createdUser);
-    } catch (_err) {
+    } catch (err) {
+      console.error(err);
       throw new HttpException(
         'Une erreur est survenue',
         HttpStatus.INTERNAL_SERVER_ERROR,

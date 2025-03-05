@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDuelDto } from './dto/create-duel.dto';
-import { UpdateDuelDto } from './dto/update-duel.dto';
 import { Duel } from './entities/duel.entity';
 import { InjectModel } from '@nestjs/sequelize';
 
@@ -23,7 +22,7 @@ export class DuelsService {
     return `This action returns a #${id} duel`;
   }
 
-  update(id: number, updateDuelDto: UpdateDuelDto) {
+  update(id: number) {
     return `This action updates a #${id} duel`;
   }
 

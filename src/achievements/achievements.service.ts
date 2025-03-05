@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAchievementDto } from './dto/create-achievement.dto';
-import { UpdateAchievementDto } from './dto/update-achievement.dto';
 import { Achievement } from './entities/achievement.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from 'src/users/entities/user.entity';
