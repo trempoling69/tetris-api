@@ -4,9 +4,9 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
-RUN npm install --save-dev sequelize-cli
+RUN npm install --save-dev sequelize-cli --legacy-peer-deps
 
 COPY . .
 
