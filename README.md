@@ -8,9 +8,9 @@ Installation en local simplifié avec docker
 
 - Lancer docker 
 
-- Lancer l'api avec la commande 
+- Lancer l'api en local avec la commande 
 ```sh
-  docker compose up --build
+  docker compose -f docker-compose.dev.yml up --build
 ```
 
 - L'api sera accessible en localhost sur le port spécifié dans le ``.env``

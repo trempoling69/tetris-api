@@ -21,7 +21,9 @@ services:
       retries: 3
 
   api:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     container_name: api
     restart: always
     environment:
